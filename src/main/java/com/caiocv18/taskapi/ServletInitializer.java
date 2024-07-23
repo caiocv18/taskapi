@@ -1,4 +1,4 @@
-package com.example.taskapi.taskapi;
+package com.caiocv18.taskapi;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

@@ -1,4 +1,4 @@
-package com.example.taskapi.taskapi;
+package com.caiocv18.taskapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

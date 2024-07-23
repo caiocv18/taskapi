@@ -1,4 +1,4 @@
-package com.example.taskapi.taskapi;
+package com.caiocv18.taskapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
