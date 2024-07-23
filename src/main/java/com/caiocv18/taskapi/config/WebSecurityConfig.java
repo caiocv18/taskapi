@@ -20,7 +20,7 @@ public class WebSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/", "/tryagain").permitAll() // Permitir acesso à página tryagain sem autenticação
+                        .requestMatchers("/", "/tryagain", "/css/**", "/js/**", "/images/**").permitAll() // Permitir acesso aos arquivos estáticos sem autenticação
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form

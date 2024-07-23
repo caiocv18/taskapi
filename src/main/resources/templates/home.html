@@ -2,9 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Home</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 <h1>Login efetuado com sucesso</h1>
+
+<a href="/tasks/add"><button>Adicionar Tarefa</button></a>
+<a href="/tasks"><button>Listar Tarefas</button></a>
+
 <form th:action="@{/logout}" method="post">
     <input type="submit" value="Logout"/>
 </form>

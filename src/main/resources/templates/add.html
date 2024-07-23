@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Adicionar Tarefa</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1>Adicionar Nova Tarefa</h1>
+<form th:action="@{/tasks}" method="post">
+    <div><label> Título: <input type="text" name="title"/> </label></div>
+    <div><label> Descrição: <input type="text" name="description"/> </label></div>
+    <div><label> Status: <input type="text" name="status"/> </label></div>
+    <div><input type="submit" value="Salvar"/></div>
+</form>
+<a href="/home"><button>Voltar</button></a>
+</body>
+</html>
