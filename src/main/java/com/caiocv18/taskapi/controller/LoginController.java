@@ -4,17 +4,29 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 @Controller
 public class LoginController {
 
     @GetMapping("/")
-    public String loginSuccess(@RequestParam(name = "continue", required = false) String continueParam) {
-        return "redirect:/home";
+    public String loginSuccess(@RequestParam(required = false) String param) {
+        if ("continue".equals(param)) {
+            return "redirect:/home";
+        }
+        return "redirect:/login";
     }
 
     @GetMapping("/home")
     public String home() {
         return "home";
+    }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
+    @GetMapping("/tryagain")
+    public String tryAgain() {
+        return "tryagain";
     }
 }
