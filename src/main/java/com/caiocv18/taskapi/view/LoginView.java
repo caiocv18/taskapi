@@ -1,11 +1,11 @@
-package com.caiocv18.taskapi.controller;
+package com.caiocv18.taskapi.view;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class LoginController {
+public class LoginView {
 
     @GetMapping("/")
     public String loginSuccess(@RequestParam(required = false) String param) {

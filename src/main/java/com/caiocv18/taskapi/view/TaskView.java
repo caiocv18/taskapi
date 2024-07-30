@@ -1,4 +1,4 @@
-package com.caiocv18.taskapi.controller;
+package com.caiocv18.taskapi.view;
 
 import com.caiocv18.taskapi.model.Task;
 import com.caiocv18.taskapi.service.TaskService;
@@ -12,12 +12,12 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/tasks")
-public class TaskController {
+public class TaskView {
 
     private final TaskService taskService;
 
     @Autowired
-    public TaskController(TaskService taskService) {
+    public TaskView(TaskService taskService) {
         this.taskService = taskService;
     }
 
