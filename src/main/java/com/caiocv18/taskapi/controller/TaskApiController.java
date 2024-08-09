@@ -50,7 +50,7 @@ public class TaskApiController {
      * @return a tarefa correspondente ao ID
      */
     @GetMapping("/{id}") // Mapeia solicitações HTTP GET para /{id} para este método.
-    public Task getTaskById(@PathVariable Long id) {
+    public Task getTaskById(@PathVariable String id) {
         return taskService.findTaskById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Tarefa inválida: " + id));
     }
@@ -63,7 +63,7 @@ public class TaskApiController {
      * @return a tarefa atualizada
      */
     @PutMapping("/{id}") // Mapeia solicitações HTTP PUT para /{id} para este método.
-    public Task updateTask(@PathVariable Long id, @RequestBody Task task) {
+    public Task updateTask(@PathVariable String id, @RequestBody Task task) {
         task.setId(id);
         return taskService.updateTask(task);
     }
@@ -74,7 +74,7 @@ public class TaskApiController {
      * @param id o ID da tarefa a ser excluída
      */
     @DeleteMapping("/{id}") // Mapeia solicitações HTTP DELETE para /{id} para este método.
-    public void deleteTask(@PathVariable Long id) {
+    public void deleteTask(@PathVariable String id) {
         taskService.deleteTask(id);
     }
 }

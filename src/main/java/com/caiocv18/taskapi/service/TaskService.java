@@ -2,6 +2,7 @@ package com.caiocv18.taskapi.service;
 
 import com.caiocv18.taskapi.model.Task;
 import com.caiocv18.taskapi.repository.TaskRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,8 +21,9 @@ public class TaskService {
      * Construtor do serviço de tarefas.
      * Injeta a dependência do repositório de tarefas.
      */
-    public TaskService() {
-        this.taskRepository = new TaskRepository();
+    @Autowired
+    public TaskService(TaskRepository taskRepository) {
+        this.taskRepository = taskRepository;
     }
 
     /**
@@ -49,7 +51,7 @@ public class TaskService {
      * @param id o ID da tarefa
      * @return uma Optional contendo a tarefa, se encontrada
      */
-    public Optional<Task> findTaskById(Long id) {
+    public Optional<Task> findTaskById(String id) {
         return taskRepository.findById(id);
     }
 
@@ -68,7 +70,7 @@ public class TaskService {
      *
      * @param id o ID da tarefa a ser excluída
      */
-    public void deleteTask(Long id) {
+    public void deleteTask(String id) {
         taskRepository.deleteById(id);
     }
 }

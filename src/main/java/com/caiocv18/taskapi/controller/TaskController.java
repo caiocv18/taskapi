@@ -1,4 +1,4 @@
-package com.caiocv18.taskapi.view;
+package com.caiocv18.taskapi.controller;
 
 import com.caiocv18.taskapi.model.Task;
 import com.caiocv18.taskapi.service.TaskService;
@@ -12,12 +12,12 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/tasks")
-public class TaskView {
+public class TaskController {
 
     private final TaskService taskService;
 
     @Autowired
-    public TaskView(TaskService taskService) {
+    public TaskController(TaskService taskService) {
         this.taskService = taskService;
     }
 
@@ -37,7 +37,7 @@ public class TaskView {
 
     @GetMapping("/edit/{id}")
     public String editTaskForm(@PathVariable Long id, Model model) {
-        Task task = taskService.findTaskById(id)
+        Task task = taskService.findTaskById(String.valueOf(id))
                 .orElseThrow(() -> new IllegalArgumentException("Tarefa inválida:" + id));
         model.addAttribute("task", task);
         return "edit";
@@ -45,7 +45,7 @@ public class TaskView {
 
     @PostMapping("/{id}")
     public String updateTask(@PathVariable Long id, @ModelAttribute Task task, RedirectAttributes redirectAttributes) {
-        task.setId(id);
+        task.setId(String.valueOf(id));
         taskService.updateTask(task);
         redirectAttributes.addFlashAttribute("message", "Tarefa atualizada com sucesso!");
         return "redirect:/tasks";
@@ -58,7 +58,7 @@ public class TaskView {
 
     @GetMapping("/delete/{id}")
     public String deleteTaskForm(@PathVariable Long id, Model model) {
-        Task task = taskService.findTaskById(id)
+        Task task = taskService.findTaskById(String.valueOf(id))
                 .orElseThrow(() -> new IllegalArgumentException("Tarefa inválida:" + id));
         model.addAttribute("task", task);
         return "delete";
@@ -66,7 +66,7 @@ public class TaskView {
 
     @PostMapping("/delete/{id}")
     public String deleteTask(@PathVariable Long id, RedirectAttributes redirectAttributes) {
-        taskService.deleteTask(id);
+        taskService.deleteTask(String.valueOf(id));
         redirectAttributes.addFlashAttribute("message", "Tarefa deletada com sucesso!");
         return "redirect:/tasks";
     }

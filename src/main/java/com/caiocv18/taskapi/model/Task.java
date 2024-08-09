@@ -1,49 +1,58 @@
 package com.caiocv18.taskapi.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * Representa uma entidade de tarefa no sistema.
- * Esta entidade é mapeada para uma tabela de banco de dados usando anotações JPA.
+ * Esta classe é mapeada para um documento MongoDB na coleção "tasks".
  */
-@Entity // Indica que esta classe é uma entidade JPA.
+@Document(collection = "tasks")
 public class Task {
 
-    @Id // Especifica a chave primária da entidade.
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Fornece a especificação das estratégias de geração para os valores das chaves primárias.
-    private Long id;
-
-    private String title;
-
-    private String description;
-
-    private String status;
+    /**
+     * Identificador único da tarefa.
+     * Anotado com @Id para indicar a chave primária do documento MongoDB.
+     */
+    @Id
+    private String id;
 
     /**
-     * Obtém o ID da tarefa.
-     *
-     * @return o ID da tarefa
+     * Título da tarefa.
      */
-    public Long getId() {
+    private String title;
+
+    /**
+     * Descrição detalhada da tarefa.
+     */
+    private String description;
+
+    /**
+     * Status atual da tarefa (ex: Pendente, Concluída).
+     */
+    private String status;
+
+    // Getters e setters
+
+    /**
+     * Obtém o identificador único da tarefa.
+     * @return id da tarefa.
+     */
+    public String getId() {
         return id;
     }
 
     /**
-     * Define o ID da tarefa.
-     *
-     * @param id o novo ID da tarefa
+     * Define o identificador único da tarefa.
+     * @param id o identificador da tarefa.
      */
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
     /**
      * Obtém o título da tarefa.
-     *
-     * @return o título da tarefa
+     * @return título da tarefa.
      */
     public String getTitle() {
         return title;
@@ -51,44 +60,39 @@ public class Task {
 
     /**
      * Define o título da tarefa.
-     *
-     * @param title o novo título da tarefa
+     * @param title o título da tarefa.
      */
     public void setTitle(String title) {
         this.title = title;
     }
 
     /**
-     * Obtém a descrição da tarefa.
-     *
-     * @return a descrição da tarefa
+     * Obtém a descrição detalhada da tarefa.
+     * @return descrição da tarefa.
      */
     public String getDescription() {
         return description;
     }
 
     /**
-     * Define a descrição da tarefa.
-     *
-     * @param description a nova descrição da tarefa
+     * Define a descrição detalhada da tarefa.
+     * @param description a descrição da tarefa.
      */
     public void setDescription(String description) {
         this.description = description;
     }
 
     /**
-     * Obtém o status da tarefa.
-     *
-     * @return o status da tarefa
+     * Obtém o status atual da tarefa.
+     * @return status da tarefa.
      */
     public String getStatus() {
         return status;
     }
 
     /**
-     * Define o status da tarefa.
-     *
-     * @param status o novo status da tarefa
+     * Define o status atual da tarefa.
+     * @param status o status da tarefa.
      */
     public void setStatus(String status) {
         this.status = status;
