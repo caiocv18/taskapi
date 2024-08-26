@@ -36,16 +36,16 @@ public class TaskController {
     }
 
     @GetMapping("/edit/{id}")
-    public String editTaskForm(@PathVariable Long id, Model model) {
-        Task task = taskService.findTaskById(String.valueOf(id))
+    public String editTaskForm(@PathVariable String id, Model model) {
+        Task task = taskService.findTaskById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Tarefa inválida:" + id));
         model.addAttribute("task", task);
         return "edit";
     }
 
     @PostMapping("/{id}")
-    public String updateTask(@PathVariable Long id, @ModelAttribute Task task, RedirectAttributes redirectAttributes) {
-        task.setId(String.valueOf(id));
+    public String updateTask(@PathVariable String id, @ModelAttribute Task task, RedirectAttributes redirectAttributes) {
+        task.setId(id);
         taskService.updateTask(task);
         redirectAttributes.addFlashAttribute("message", "Tarefa atualizada com sucesso!");
         return "redirect:/tasks";
@@ -57,16 +57,16 @@ public class TaskController {
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteTaskForm(@PathVariable Long id, Model model) {
-        Task task = taskService.findTaskById(String.valueOf(id))
+    public String deleteTaskForm(@PathVariable String id, Model model) {
+        Task task = taskService.findTaskById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Tarefa inválida:" + id));
         model.addAttribute("task", task);
         return "delete";
     }
 
     @PostMapping("/delete/{id}")
-    public String deleteTask(@PathVariable Long id, RedirectAttributes redirectAttributes) {
-        taskService.deleteTask(String.valueOf(id));
+    public String deleteTask(@PathVariable String id, RedirectAttributes redirectAttributes) {
+        taskService.deleteTask(id);
         redirectAttributes.addFlashAttribute("message", "Tarefa deletada com sucesso!");
         return "redirect:/tasks";
     }
